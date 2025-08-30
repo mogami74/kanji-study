@@ -1,0 +1,11 @@
+{
+  "name": "kanji-study",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "build": "tsc && cp problems.json dist/ && cp style.css dist/ && cp index.html dist/"
+  },
+  "devDependencies": {
+    "typescript": "^5.0.0"
+  }
+}

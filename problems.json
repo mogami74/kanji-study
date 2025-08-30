@@ -1,0 +1,5 @@
+[
+  { "type": "yomi", "question": "山", "answer": "やま" },
+  { "type": "kakitori", "question": "やま", "answer": "山" },
+  { "type": "yojijukugo", "question": "一石二鳥", "answer": "いっせきにちょう" }
+]

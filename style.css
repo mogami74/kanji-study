@@ -1,0 +1,65 @@
+body {
+  font-family: 'Yu Gothic', 'Hiragino Kaku Gothic ProN', Meiryo, sans-serif;
+  background: #f7f6f3;
+  color: #333;
+  margin: 0;
+  padding: 0;
+}
+#app {
+  max-width: 400px;
+  margin: 2em auto;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  padding: 2em 1.5em;
+}
+h1 {
+  text-align: center;
+  color: #5a4a42;
+  margin-bottom: 1.5em;
+}
+button {
+  background: #e0d6c3;
+  color: #5a4a42;
+  border: none;
+  border-radius: 6px;
+  padding: 0.7em 1.2em;
+  margin: 0.3em;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+button:hover {
+  background: #d1c3a7;
+}
+#question {
+  font-size: 1.5em;
+  text-align: center;
+  margin: 1.2em 0;
+}
+#answer {
+  font-size: 1.2em;
+  color: #b07b4a;
+  text-align: center;
+  margin-bottom: 1em;
+}
+#progress {
+  text-align: right;
+  font-size: 0.9em;
+  color: #888;
+  margin-top: 1em;
+}
+#mode-select {
+  text-align: center;
+  margin-bottom: 2em;
+}
+#result-buttons {
+  text-align: center;
+  margin-bottom: 1em;
+}
+#end {
+  display: block;
+  margin: 2em auto 0 auto;
+  background: #b07b4a;
+  color: #fff;
+}

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>漢字学習</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <div id="app">
+    <h1>漢字学習</h1>
+    <div id="mode-select">
+      <button data-mode="yomi">読み問題</button>
+      <button data-mode="kakitori">書き取り問題</button>
+      <button data-mode="yojijukugo">四字熟語問題</button>
+      <button data-mode="mix">3種混合</button>
+    </div>
+    <div id="main" style="display:none;">
+      <div id="question"></div>
+      <button id="show-answer">正解を表示</button>
+      <div id="answer" style="display:none;"></div>
+      <div id="result-buttons" style="display:none;">
+        <button id="btn-correct">正解</button>
+        <button id="btn-wrong">不正解</button>
+      </div>
+      <div id="progress"></div>
+      <button id="end">終了</button>
+    </div>
+  </div>
+  <script src="./main.js" type="module"></script>
+</body>
+</html>
