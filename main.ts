@@ -63,7 +63,7 @@ function shuffle<T>(array: T[]): T[] {
   return arr;
 }
 
-function selectProblems(mode: Mode, count = 10): Problem[] {
+function selectProblems(mode: Mode): Problem[] {
   let filtered: Problem[];
   if (mode === 'mix') {
     filtered = problems.slice();
@@ -71,7 +71,7 @@ function selectProblems(mode: Mode, count = 10): Problem[] {
     filtered = problems.filter(p => p.type === mode);
   }
   // 正解率が低いものを優先（仮実装: ランダム）
-  return shuffle(filtered).slice(0, count);
+  return shuffle(filtered);
 }
 
 function showQuestion() {
@@ -81,20 +81,18 @@ function showQuestion() {
   const resultBtns = document.getElementById('result-buttons')!;
   const progressDiv = document.getElementById('progress')!;
   
+  // 問題リストの最後まで行ったら、再度シャッフルして最初から
   if (currentIndex >= currentProblems.length) {
-    progressDiv.textContent = `学習終了！正解: ${correctCount} 不正解: ${wrongCount}`;
-    questionDiv.textContent = '';
-    answerDiv.style.display = 'none';
-    showAnswerBtn.style.display = 'none';
-    resultBtns.style.display = 'none';
-    return;
+    currentProblems = shuffle(currentProblems);
+    currentIndex = 0;
   }
+  
   const p = currentProblems[currentIndex];
   questionDiv.textContent = p.type === 'kakitori' ? `「${p.question}」を書きなさい` : p.question;
   answerDiv.style.display = 'none';
   showAnswerBtn.style.display = '';
   resultBtns.style.display = 'none';
-  progressDiv.textContent = `問題 ${currentIndex + 1} / ${currentProblems.length}`;
+  progressDiv.textContent = `正解: ${correctCount} / 不正解: ${wrongCount}`;
 }
 
 function showAnswer() {
