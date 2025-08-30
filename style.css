@@ -36,12 +36,85 @@ button:hover {
   font-size: 1.5em;
   text-align: center;
   margin: 1.2em 0;
+  min-height: 2em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
+
+#question-area {
+  cursor: pointer;
+  min-height: 120px;
+  border: 2px dashed #e0d6c3;
+  border-radius: 8px;
+  margin: 1em 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 0.3s;
+}
+
+#question-area.clickable {
+  border-color: #b07b4a;
+  background-color: #faf9f7;
+}
+
+#question-area.clickable:hover {
+  border-color: #8a6139;
+  background-color: #f5f3f0;
+}
+
+#touch-hint {
+  font-size: 0.9em;
+  color: #b07b4a;
+  font-style: italic;
+  margin-top: 0.5em;
+  display: none;
+}
+
 #answer {
-  font-size: 1.2em;
+  font-size: 1.3em;
   color: #b07b4a;
   text-align: center;
-  margin-bottom: 1em;
+  margin: 1em 0;
+  font-weight: bold;
+  padding: 1em;
+  background: #faf9f7;
+  border-radius: 8px;
+  border: 2px solid #e0d6c3;
+}
+
+#result-buttons {
+  text-align: center;
+  margin: 2em 0 1em 0;
+  display: flex;
+  justify-content: center;
+  gap: 1em;
+}
+
+#result-buttons button {
+  font-size: 1.1em;
+  padding: 1em 2em;
+  min-width: 120px;
+}
+
+#btn-correct {
+  background: #90c695;
+  color: white;
+}
+
+#btn-correct:hover {
+  background: #7db582;
+}
+
+#btn-wrong {
+  background: #e89090;
+  color: white;
+}
+
+#btn-wrong:hover {
+  background: #e47d7d;
 }
 #progress {
   text-align: right;
@@ -53,10 +126,7 @@ button:hover {
   text-align: center;
   margin-bottom: 2em;
 }
-#result-buttons {
-  text-align: center;
-  margin-bottom: 1em;
-}
+
 #end {
   display: block;
   margin: 2em auto 0 auto;

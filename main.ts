@@ -26,6 +26,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 function setupEventListeners() {
   const modeSelect = document.getElementById('mode-select')!;
   const main = document.getElementById('main')!;
+  const questionArea = document.getElementById('question-area')!;
   const showAnswerBtn = document.getElementById('show-answer')!;
   const btnCorrect = document.getElementById('btn-correct')!;
   const btnWrong = document.getElementById('btn-wrong')!;
@@ -45,7 +46,21 @@ function setupEventListeners() {
     }
   });
 
-  showAnswerBtn.addEventListener('click', showAnswer);
+  // 画面全体をタッチして正解表示
+  questionArea.addEventListener('click', (e) => {
+    const answerDiv = document.getElementById('answer')!;
+    const showAnswerBtn = document.getElementById('show-answer')!;
+    
+    // 正解表示前の状態でのみ反応
+    if (answerDiv.style.display === 'none' || answerDiv.style.display === '') {
+      showAnswer();
+    }
+  });
+
+  showAnswerBtn.addEventListener('click', (e) => {
+    e.stopPropagation(); // 親要素のクリックイベントを防ぐ
+    showAnswer();
+  });
   btnCorrect.addEventListener('click', () => nextQuestion(true));
   btnWrong.addEventListener('click', () => nextQuestion(false));
   endBtn.addEventListener('click', () => {
@@ -76,6 +91,8 @@ function selectProblems(mode: Mode): Problem[] {
 
 function showQuestion() {
   const questionDiv = document.getElementById('question')!;
+  const questionArea = document.getElementById('question-area')!;
+  const touchHint = document.getElementById('touch-hint')!;
   const answerDiv = document.getElementById('answer')!;
   const showAnswerBtn = document.getElementById('show-answer')!;
   const resultBtns = document.getElementById('result-buttons')!;
@@ -89,6 +106,11 @@ function showQuestion() {
   
   const p = currentProblems[currentIndex];
   questionDiv.textContent = p.type === 'kakitori' ? `「${p.question}」を書きなさい` : p.question;
+  
+  // 画面全体をクリック可能にする視覚的ヒント
+  questionArea.classList.add('clickable');
+  touchHint.style.display = 'block';
+  
   answerDiv.style.display = 'none';
   showAnswerBtn.style.display = '';
   resultBtns.style.display = 'none';
@@ -97,6 +119,8 @@ function showQuestion() {
 
 function showAnswer() {
   const answerDiv = document.getElementById('answer')!;
+  const questionArea = document.getElementById('question-area')!;
+  const touchHint = document.getElementById('touch-hint')!;
   const showAnswerBtn = document.getElementById('show-answer')!;
   const resultBtns = document.getElementById('result-buttons')!;
   
@@ -105,6 +129,10 @@ function showAnswer() {
   answerDiv.style.display = '';
   resultBtns.style.display = '';
   showAnswerBtn.style.display = 'none';
+  
+  // クリック可能状態を解除
+  questionArea.classList.remove('clickable');
+  touchHint.style.display = 'none';
 }
 
 function nextQuestion(isCorrect: boolean) {
