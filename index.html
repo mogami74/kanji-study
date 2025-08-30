@@ -16,15 +16,15 @@
       <button data-mode="mix">3種混合</button>
     </div>
     <div id="main" style="display:none;">
-      <div id="question-area">
+      <div id="display-area">
         <div id="question"></div>
+        <div id="answer" style="display:none;"></div>
         <div id="touch-hint">画面をタッチして正解を表示</div>
-        <button id="show-answer">正解を表示</button>
       </div>
-      <div id="answer" style="display:none;"></div>
-      <div id="result-buttons" style="display:none;">
-        <button id="btn-correct">正解</button>
-        <button id="btn-wrong">不正解</button>
+      <div id="action-buttons">
+        <button id="show-answer">正解を表示</button>
+        <button id="btn-correct" style="display:none;">正解</button>
+        <button id="btn-wrong" style="display:none;">不正解</button>
       </div>
       <div id="progress"></div>
       <button id="end">終了</button>

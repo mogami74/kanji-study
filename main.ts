@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 function setupEventListeners() {
   const modeSelect = document.getElementById('mode-select')!;
   const main = document.getElementById('main')!;
-  const questionArea = document.getElementById('question-area')!;
+  const displayArea = document.getElementById('display-area')!;
   const showAnswerBtn = document.getElementById('show-answer')!;
   const btnCorrect = document.getElementById('btn-correct')!;
   const btnWrong = document.getElementById('btn-wrong')!;
@@ -47,7 +47,7 @@ function setupEventListeners() {
   });
 
   // 画面全体をタッチして正解表示
-  questionArea.addEventListener('click', (e) => {
+  displayArea.addEventListener('click', (e) => {
     const answerDiv = document.getElementById('answer')!;
     const showAnswerBtn = document.getElementById('show-answer')!;
     
@@ -91,11 +91,12 @@ function selectProblems(mode: Mode): Problem[] {
 
 function showQuestion() {
   const questionDiv = document.getElementById('question')!;
-  const questionArea = document.getElementById('question-area')!;
+  const displayArea = document.getElementById('display-area')!;
   const touchHint = document.getElementById('touch-hint')!;
   const answerDiv = document.getElementById('answer')!;
   const showAnswerBtn = document.getElementById('show-answer')!;
-  const resultBtns = document.getElementById('result-buttons')!;
+  const btnCorrect = document.getElementById('btn-correct')!;
+  const btnWrong = document.getElementById('btn-wrong')!;
   const progressDiv = document.getElementById('progress')!;
   
   // 問題リストの最後まで行ったら、再度シャッフルして最初から
@@ -108,30 +109,33 @@ function showQuestion() {
   questionDiv.textContent = p.type === 'kakitori' ? `「${p.question}」を書きなさい` : p.question;
   
   // 画面全体をクリック可能にする視覚的ヒント
-  questionArea.classList.add('clickable');
+  displayArea.classList.add('clickable');
   touchHint.style.display = 'block';
   
   answerDiv.style.display = 'none';
   showAnswerBtn.style.display = '';
-  resultBtns.style.display = 'none';
+  btnCorrect.style.display = 'none';
+  btnWrong.style.display = 'none';
   progressDiv.textContent = `正解: ${correctCount} / 不正解: ${wrongCount}`;
 }
 
 function showAnswer() {
   const answerDiv = document.getElementById('answer')!;
-  const questionArea = document.getElementById('question-area')!;
+  const displayArea = document.getElementById('display-area')!;
   const touchHint = document.getElementById('touch-hint')!;
   const showAnswerBtn = document.getElementById('show-answer')!;
-  const resultBtns = document.getElementById('result-buttons')!;
+  const btnCorrect = document.getElementById('btn-correct')!;
+  const btnWrong = document.getElementById('btn-wrong')!;
   
   const p = currentProblems[currentIndex];
   answerDiv.textContent = `正解：${p.answer}`;
   answerDiv.style.display = '';
-  resultBtns.style.display = '';
   showAnswerBtn.style.display = 'none';
+  btnCorrect.style.display = '';
+  btnWrong.style.display = '';
   
   // クリック可能状態を解除
-  questionArea.classList.remove('clickable');
+  displayArea.classList.remove('clickable');
   touchHint.style.display = 'none';
 }
 
